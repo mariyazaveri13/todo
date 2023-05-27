@@ -1,7 +1,7 @@
 import './style.css'
 function elements(){
-    const element = document.createElement('div');
-    element.innerText = 'Hidfdz';
-    return element;
+    // const element = document.createElement('div');
+    // element.innerText = 'Hidfdz';
+    // return element;
 }
-document.body.appendChild(elements());
+// document.body.appendChild(elements());
