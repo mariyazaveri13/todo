@@ -11,14 +11,12 @@
     "watch": "webpack --watch",
     "build": "webpack ",
     "start": "webpack serve --open",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.7.4",
-    "gh-pages": "^5.0.0",
     "html-inline-css-webpack-plugin": "^1.11.1",
     "html-webpack-plugin": "^5.5.1",
     "style-loader": "^3.3.3",
