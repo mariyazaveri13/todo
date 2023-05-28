@@ -1,9 +1,10 @@
 import Project from './Project.js';
 
 export default class TodoList{
-    constructor(){
+    constructor(id){
+        this.id = id;
         this.projects = []
-        this.projects.push(new Project('Inbox'));
+        this.projects.push(new Project('inbox','Inbox'));
     }
 
     addProjects(project){
@@ -12,5 +13,9 @@ export default class TodoList{
 
     getTodoList(){
         return this.projects;
+    }
+
+    getId(){
+        return this.id;
     }
 }

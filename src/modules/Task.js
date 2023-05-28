@@ -1,9 +1,14 @@
 export default class Task{
-    constructor(name,detail,date){
+    constructor(id,name,detail,date){
+        this.id=id;
         this.name = name;
         this.status = false;
         this.detail = detail;
         this.date = date;
+    }
+
+    getId(){
+        return this.id;
     }
 
     getName(){
