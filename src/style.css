@@ -16,8 +16,8 @@
     --size-small:5px;
 
     --font-big:2.5em;
-    --font-mid:1.2em;
-    --font-small:0.7em;
+    --font-mid:1.4em;
+    --font-small:1.2em;
 
 }
 
@@ -30,15 +30,15 @@ body{
 .body {
     display: grid;
     grid-template-columns: minmax(150px, 1fr) 4fr;
-    grid-template-rows: 3;
+    grid-template-rows: 2fr auto 1fr;
 }
 
 .header{
     grid-column: 1/3;
+    grid-row: 1;
     padding: var(--size-big);
     background: var(--pr-color);
     color: var(--sd-color);
-    height: 9vh;
 }
 
 .logo,
@@ -53,13 +53,10 @@ body{
 }
 
 .sidebar {
-    height: calc(100vh - 20vh);
-    position: sticky;
-    top: 0;
+    height: 100vh;
     grid-column: 1 / 2;
     padding: var(--size-mid);
     background: var(--acc-color);
-    overflow: auto;
     color: var(--sd-color);
 }
 
@@ -68,14 +65,13 @@ body{
     background: #000;
     grid-row: 3;
     grid-column: 1/3;
-    width: 100%;
-    height: 5vh;
     color: var(--sd-color);
     background: var(--pr-color);
     font-size: var(--font-mid);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: var(--size-mid);
 }
 
 .footer a {
@@ -89,4 +85,81 @@ body{
 
 .footer a:hover {
     color: var(--sd-color);
+}
+
+.project-btn{
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-mid);
+    padding: var(--size-mid);
+    margin-top: var(--size-small);
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: visible;
+}
+
+.project-btn:hover{
+    background: var(--pr-color);
+    border-radius: var(--size-small);
+}
+
+.project-btn.active-project{
+    background: var(--pr-color);
+    border-radius: var(--size-small);
+}
+
+.content{
+    margin: var(--size-big);
+}
+
+
+.content-header{
+    font-size: var(--font-big);
+    text-align: center;
+}
+
+.todo{
+    font-size: var(--font-mid);
+    display: flex;
+    width: 80%;
+    padding: var(--size-mid);
+    justify-content: space-between;
+}
+
+.todo-name{
+    display: flex;
+}
+
+.todo-options > i,
+.todo-name > div{
+    margin-right: var(--size-small);
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: var(--size-mid);
+    align-items: center;
+}
+
+.todo-date{
+    background:var(--sd-color) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ; border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(243, 217, 17, 0.1);
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
