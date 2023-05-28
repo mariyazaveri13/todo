@@ -1,6 +1,7 @@
 import Project from "./Project";
 import TodoList from "./TodoList";
 import Logger from "./Logger";
+import Storage from "./Storage";
 
 const FILE_NAME = 'src/modules/UI.js';
 
@@ -35,29 +36,23 @@ function removeClass(element){
 }
 
 export function setProjectsInSideBar(){
-    const p1 =  new Project("pp","pp");
-    const p2 =  new Project(transormToCamelCase("xyzzs sd"),"xyzzs sd");
-
-    console.log(p1);
+    const p1 =  new Project(transormToCamelCase("Make Todo list"),"Make Todo list");
+    const p2 =  new Project(transormToCamelCase("Progress over Perfection"),"Progress over Perfection");
 
     const list = new TodoList();
 
     list.addProjects(p1);
-    list.addProjects(p2);
+    //list.addProjects(p2);
 
-    let lista = list.getTodoList();
+    Storage.saveToLocalStorge(list);
 
-    console.log(JSON.stringify(lista));
-    Logger.stringy('lista',lista,FILE_NAME);
-    Logger.colorLog('sda',FILE_NAME )
-
+    let lista = Storage.getProjectList();
+    console.log(lista);
     let todoListinner = '';
+
     lista.map((p) => {
-        console.log(JSON.stringify(p));
-        Logger.stringy('objj',p,FILE_NAME);
-        Logger.log('aaa aa',FILE_NAME);
         todoListinner += `
-        <div class="project-btn" id="${transormToCamelCase(p.name)}">
+        <div class="project-btn" id="${p.id}">
             <div>
                 <i class="fas fa-solid fa-inbox"></i>
                 ${p.name}
