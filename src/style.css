@@ -100,6 +100,7 @@ body{
 }
 .show{
     display: visible;
+    cursor: pointer;
 }
 
 .project-btn:hover{
@@ -107,9 +108,63 @@ body{
     border-radius: var(--size-small);
 }
 
-.project-btn.active-project{
+.project-btn.active-project,
+.sidebar-input
+{
     background: var(--pr-color);
     border-radius: var(--size-small);
+}
+
+.sidebar-input{
+    grid-row: 1;
+    background: var(--sd-color);
+    border: 0;
+    font-family: inherit;
+    color: var(--pr-color);
+    font-size: var(--font-mid);
+    padding: var(--size-mid);
+    margin-top: var(--size-small);
+}
+
+.sidebar-input::placeholder { 
+    color: var(--acc-color);
+}
+
+.menu-items-pr{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.btns{
+    display: grid;
+    grid-template-rows: 1fr;
+    gap:var(--size-mid);
+}
+
+.btn{
+    font-family: inherit;
+    font-size: var(--font-small);
+    padding: var(--size-small);
+    border-radius: var(--size-big);
+    outline:0;
+    grid-row: 1;
+    margin-top: var(--size-mid);
+    background-color: var(--pr-color);
+    border: 2px solid var(--acc-color);
+    color: var(--sd-color);
+}
+
+.btn:hover{
+    font-size: var(--font-mid);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hr{
+    margin: var(--size-big) 0 var(--size-big) 0;
+    border: 0;
+    height: 2px;
+    background: var(--pr-color);
 }
 
 .content{

@@ -1,5 +1,7 @@
 import './style.css'
-import {makeActiveProject,setProjectsInSideBar} from './modules/UI.js';
+import {makeActiveProject,setProjectsInSideBar,innitGoals,defaultProject} from './modules/UI.js';
 
-makeActiveProject();
+defaultProject();
+//makeActiveProject();
+innitGoals();
 setProjectsInSideBar();

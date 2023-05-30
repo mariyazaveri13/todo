@@ -1,9 +1,16 @@
 import Project from "./Project";
-import TodoList from "./TodoList";
 import Logger from "./Logger";
-import Storage from "./Storage";
+import TodoList from "./TodoList";
 
 const FILE_NAME = 'src/modules/UI.js';
+const todoList = new TodoList();
+
+export function defaultProject(){
+    const project= new Project('inbox','Inbox');
+    todoList.addProjects(project)
+    setProjectsInSideBar();
+    makeActiveProject('inbox');
+}
 
 export function makeActiveProject(ele){
 
@@ -36,21 +43,8 @@ function removeClass(element){
 }
 
 export function setProjectsInSideBar(){
-    const p1 =  new Project(transormToCamelCase("Make Todo list"),"Make Todo list");
-    const p2 =  new Project(transormToCamelCase("Progress over Perfection"),"Progress over Perfection");
-
-    const list = new TodoList();
-
-    list.addProjects(p1);
-    //list.addProjects(p2);
-
-    Storage.saveToLocalStorge(list);
-
-    let lista = Storage.getProjectList();
-    console.log(lista);
     let todoListinner = '';
-
-    lista.map((p) => {
+    todoList.getTodoList().map((p) => {
         todoListinner += `
         <div class="project-btn" id="${p.id}">
             <div>
@@ -73,4 +67,38 @@ export function setProjectsInSideBar(){
 
 function transormToCamelCase(str){
     return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
+
+export function innitGoals(){
+    const submitBtn = document.getElementById('submitBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    submitBtn.onclick = (e) => handleOnclickCreateGoal();
+    resetBtn.onclick = (e) => handleOnclickResetGoal();
+}
+
+function handleOnclickCreateGoal(){
+    let projectName = document.getElementById('projectName').value;
+    const projectId = transormToCamelCase(projectName);
+
+    if(!projectName){
+        alert('Please enter a goal');
+        return;
+    }
+    if(todoList.checkValidity(projectId)){
+        alert('You cannt enter same goals');
+        document.getElementById('projectName').value='';
+        return;
+    }
+    
+    const newProject =  new Project(transormToCamelCase(projectId),projectName);
+
+    todoList.addProjects(newProject);
+    
+    setProjectsInSideBar(todoList.getTodoList());
+    document.getElementById('projectName').value="";
+}
+
+function handleOnclickResetGoal(){
+    document.getElementById('projectName').value = '';
 }

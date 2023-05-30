@@ -1,10 +1,9 @@
 import Project from './Project.js';
 
 export default class TodoList{
-    constructor(id){
-        this.id = id;
+    constructor(){
         this.projects = []
-        this.projects.push(new Project('inbox','Inbox'));
+        //this.projects.push(new Project('inbox','Inbox'));
     }
 
     addProjects(project){
@@ -15,7 +14,15 @@ export default class TodoList{
         return this.projects;
     }
 
-    getId(){
-        return this.id;
+    getProject(projectId){
+        return this.projects.find((p)=>{
+            return p.id === projectId
+        });
+    }
+
+    checkValidity(projectId){
+        return this.getTodoList().some((project) => {
+            return project.id === projectId;
+        });
     }
 }
